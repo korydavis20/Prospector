@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Card : MonoBehaviour {
 
+	[Header ("Set Dynamically")]
 	public string    suit;
 	public int       rank;
 	public Color     color = Color.black;
@@ -15,23 +16,22 @@ public class Card : MonoBehaviour {
 	public GameObject back;  // back of card;
 	public CardDefinition def;  // from DeckXML.xml		
 
-	// Use this for initialization
-	void Start () {
-	
+	public bool faceUp{
+		get{
+			return(!back.activeSelf);
+		}set{
+			back.SetActive (!value);
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-} // class Card
+
+}
 
 [System.Serializable]
 public class Decorator{
 	public string	type;			// For card pips, tyhpe = "pip"
 	public Vector3	loc;			// location of sprite on the card
 	public bool		flip = false;	//whether to flip vertically
-	public float 	scale = 1.0f;
+	public float 	scale = 1f;
 }
 
 [System.Serializable]
